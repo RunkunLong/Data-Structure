@@ -11,7 +11,7 @@
 ### Uncomment the following line to enable testing and feedback on
 ### your lab from the autograder.
 
-#test
+test
 
 ### Uncomment the following line to force your lab to be turned in at
 ### the next late turn-in deadline, overwriting the previous
