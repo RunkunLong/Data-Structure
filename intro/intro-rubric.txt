@@ -1,13 +1,13 @@
 ########################################################################
 # CSE 241 LAB 0 GRADING RUBRIC
 
-Repo Name (WUSTL key):
+Repo Name (WUSTL key):runkun.long
 
-Language used:
+Language used:java
 
-Name of grader:
+Name of grader:TL
 
-OVERALL GRADE:
+OVERALL GRADE:67
 
 ///////////////////////////////////////////////////////////////////////
 
@@ -15,6 +15,7 @@ Lateness penalty (if any):
 
 ///////////////////////////////////////////////////////////////////////
 
-### TEST CASES (88%)
+### TEST CASES (88%) 55
+-33: -11 points per test case failed
 
-### README (12%)
+### README (12%) 12
