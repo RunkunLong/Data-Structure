@@ -17,7 +17,7 @@ public class ClosestPairDC {
     //  - points sorted in nondecreasing order by Y coordinate
     //
     
-    public static void findClosestPair(XYPoint pointsByX[], 
+    public static double findClosestPair(XYPoint pointsByX[], 
 				       XYPoint pointsByY[],
 				       boolean print)
     {
@@ -30,7 +30,6 @@ public class ClosestPairDC {
 		 if (nPoints==1)
 			{
 				distance=INF;
-				return;
 	        }
 		 else
 		    {
@@ -45,9 +44,20 @@ public class ClosestPairDC {
 				    	 out[1]=pointsByX[j];
 				     }
 		         }
-		return;
-	
-	// if (print)
-	//   System.out.println("DC " + ...);
+		return min;// the foundamental case		
     }
+	if(nPoints>3)
+	{
+		 int mid=(int)Math.ceil(nPoints/2)-1;
+		 XYPoint XL[]= new XYPoint[mid];
+		 	for(int i=0;i<=mid;i++)
+		 		XL[i]=pointsByX[i];
+		 XYPoint XR[]= new XYPoint[nPoints-mid];
+		    for(int i=mid+1,j=0;i<nPoints-1;i++,j++)
+		    	XR[j]=pointsByX[i];
+		   
+	}
+		 
+		// if (print)
+			//   System.out.println("DC " + ...);
 }
