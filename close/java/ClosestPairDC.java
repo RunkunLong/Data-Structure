@@ -21,10 +21,10 @@ public class ClosestPairDC {
     {
     	 int nPoints = pointsByX.length;
     	 double distance;
-    	 min=double ClosestPair(pointsByX, pointsByY,nPoints);
+    	 min= ClosestPair(pointsByX, pointsByY,nPoints);
     	 if (print) 
     	 {
- 			System.out.println("DC " + result[0] +" "+ result[1] +" "+ min);
+ 			System.out.println("DC " + out[0] +" "+ out[1] +" "+ min);
  		 }
 
     	 
@@ -111,3 +111,4 @@ public class ClosestPairDC {
              }
             return min;
     	}
+}
