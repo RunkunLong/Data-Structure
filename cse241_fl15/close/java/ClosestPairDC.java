@@ -1,121 +1,115 @@
 public class ClosestPairDC {
     
     public final static double INF = java.lang.Double.POSITIVE_INFINITY;
-    public static int outx1,outx2,outy1,outy2;
-    public static double min=INF;
-  
-    public static double ClosestPair(XYPoint pointsByX[], int nPoints){
-    	
-    	double distance;
-    	
-   	  
-    	//exit
-    	if (nPoints <= 3) {
 
-			for (int i = 0; i < nPoints - 1; i++) {
-				
-				for (int j = i + 1; j < nPoints; j++) {
-					
-					distance = pointsByX[j].dist(pointsByX[i]);
-					if (distance <= min) {
-						min = distance;
-						outx1=pointsByX[i].x;
-						outx2=pointsByX[j].x;
-						outy1=pointsByX[i].y;
-						outy2=pointsByX[j].y;
-							
-					}
-				}
-			}
-			return min;
-		}
+    //
+    // findClosestPair()
+    //
+    // Given a collection of nPoints points, find and ***print***
+    //  * the closest pair of points
+    //  * the distance between them
+    // in the form "DC (x1, y1) (x2, y2) distance"
+    //
+    
+    // INPUTS:
+    //  - points sorted in nondecreasing order by X coordinate
+    //  - points sorted in nondecreasing order by Y coordinate
+    static XYPoint a=null;
+    static XYPoint b=null;
+    public static double mindist=INF;
 
-   /*	 if (nPoints==1){
-   		
-		distance=Double.POSITIVE_INFINITY;
-		 return distance;
-	 }
-	if (nPoints==2){
-		
-		distance = pointsByX[0].dist(pointsByX[1]);
-			x1out=pointsByX[0].x;
-			x2out=pointsByX[1].x;
-			System.out.println(pointsByX[0].x+"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-			System.out.println(pointsByX[0].y+"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-			y1out=pointsByX[0].y;
-			y2out=pointsByX[1].y;
-		return  distance;
-		
-	}*/
-    	
-    	if(nPoints>3){
-//mid
-    	int mid= (int)Math.ceil(nPoints/2);
-    	
+    //
     
-// assignment Xarray	
-    	XYPoint XL[] = new XYPoint[mid];
-    	for(int i=0; i<=mid-1;i++){
-    		XL[i]=pointsByX[i];
-    	}
-    	XYPoint XR[] = new XYPoint[nPoints-mid];
-    	for(int i=mid;i<=nPoints-1;i++){
-    		XR[i-mid]=pointsByX[i];
-    	}
-    	
-    	
-    	//iteration
-    	double distL = ClosestPair(XL,XL.length);
-    	double distR = ClosestPair(XR,XR.length);
-    	
-    	
-    	double lrDist=(distL<distR?distL:distR);
-    	
-    
-    	 for(int j=0;j<=mid;j++){
-    		 
-   		   if(Math.abs(pointsByX[mid].x-pointsByX[j].x)<lrDist){
-   			  
-   		   for(int k=mid;k<pointsByX.length;k++){
-   			   
-   			if(pointsByX[k]!=pointsByX[j]&&Math.abs(pointsByX[k].x-pointsByX[mid].x)<Math.abs(lrDist-pointsByX[mid].x)&&Math.abs(pointsByX[k].y-pointsByX[mid].y)<lrDist){
-   				
-   				double ddd=pointsByX[j].dist(pointsByX[k]);
-   				
-   				
-   				if(ddd<min){
-   					min=ddd;
-   			
-   					outx1=pointsByX[j].x;
-   	   				outx2=pointsByX[k].x;
-   	   				outy1=pointsByX[j].y;
-   	   				outy2=pointsByX[k].y;
-   				}
-   				
-   				
-   			
-   			}
-   		   }
-   		   }
-   		 
-   	   }
-    	}
-    	
-    return min;
-    }
-    
-    
-  
-    
-    //main method
     public static void findClosestPair(XYPoint pointsByX[], 
 				       XYPoint pointsByY[],
 				       boolean print)
     {
-    	double dout = ClosestPair(pointsByX,pointsByX.length);
+	// int nPoints = pointsByX.length;
     	
-	if (print){
-	   System.out.println("DC "+"("+outx1+","+outy1+")"+","+"("+outx2+","+outy2+")"+","+dout );
-    }
+ 	// if (print)
+ 	//   System.out.println("DC " + ...);
+    	int nPoints=pointsByX.length;
+        double lrdist=INF;
+        double distance_now=INF;
+        if(nPoints==1){
+     	   distance_now= INF;
+     	   return;
+        }
+        if(nPoints==2){
+     	  distance_now=pointsByX[0].dist(pointsByX[1]);
+     	  if(distance_now<mindist){
+     	  mindist=distance_now;
+     	  a=pointsByX[0];
+     	  b=pointsByX[1];
+        }
+     	  return;
+        }
+        int mid=0;
+        mid=(int)Math.ceil((double)nPoints/2)-1;
+        XYPoint[] PointsXL=new XYPoint[mid];
+        XYPoint[] PointsXR=new XYPoint[nPoints-mid];
+        for(int i=0;i<mid;i++){
+     	   PointsXL[i]=pointsByX[i];
+        }
+        for(int i=mid,j=0;i<nPoints;i++){
+     	   PointsXR[j]=pointsByX[i];
+     	   j++;
+        }
+        XYPoint[] PointsYL=new XYPoint[mid];
+        XYPoint[] PointsYR=new XYPoint[nPoints-mid];
+        
+        for(int i=0,j=0,k=0;i<nPoints;i++){
+     	   if(pointsByY[i].isLeftOf(pointsByX[mid])){
+     		   PointsYL[j]=pointsByY[i];
+     		   j++;
+     	   }
+     	   else{
+     		   PointsYR[k]=pointsByY[i];
+     		   k++;
+     	   }
+        }
+        findClosestPair(PointsXL,PointsYL,false);
+        findClosestPair(PointsXR,PointsYR,false);
+        lrdist=mindist;
+        XYPoint[] yStrip=new XYPoint[nPoints];
+        XYPoint midpoint=pointsByX[mid];
+        for(int i=0,k=0;i<nPoints;i++){
+     	   if(Math.abs(pointsByY[i].x-midpoint.x)<lrdist){
+     		   yStrip[k]=pointsByY[i];
+        		   k++;
+     	   }
+        }
+        
+        for(int i=0,j=0;i<yStrip.length-1;i++){
+     	   j=i+1;
+     	   while(j<yStrip.length){
+     		   if(yStrip[j]==null)
+     			   break;
+     		   if(Math.abs(yStrip[i].y-yStrip[j].y)<lrdist){
+     			   distance_now=yStrip[i].dist(yStrip[j]);
+     			   if(distance_now<mindist){
+     				   mindist=distance_now;
+     				   a=yStrip[i];
+     				   b=yStrip[j];
+     				   
+     			   }
+     		   }
+     		   j++;
+     	   }
+        }
+        if(print){
+     	   System.out.println("DC "+a.toString()+" "+b.toString()+" "+mindist);
+     	   
+        }
+
+      
+	
+	//
+	// Your code goes here!
+	//
+       
+
+	// if (print)
+	//   System.out.println("DC " + ...);
     }
 }

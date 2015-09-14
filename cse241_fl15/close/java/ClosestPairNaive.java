@@ -1,4 +1,4 @@
-public class ClosestPairDC {
+public class ClosestPairNaive {
     
     public final static double INF = java.lang.Double.POSITIVE_INFINITY;
 
