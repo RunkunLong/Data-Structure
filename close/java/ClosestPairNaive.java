@@ -33,7 +33,7 @@ public class ClosestPairNaive {
 				 a=points[i];
 				 b=points[j];
 			 }
-			 j=j+1;
+			 j=j++;
 		 }
 		 i++;
 	 }
