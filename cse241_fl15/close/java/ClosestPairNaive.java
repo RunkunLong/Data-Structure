@@ -1,3 +1,4 @@
+
 public class ClosestPairNaive {
     
     public final static double INF = java.lang.Double.POSITIVE_INFINITY;
@@ -24,16 +25,16 @@ public class ClosestPairNaive {
 	 int i=0;
 	 XYPoint a=null;
 	 XYPoint b=null;
-	 while(i<nPoints-2){
+	 while(i<=nPoints-2){
 		 int j=i+1;
-		 while(j<nPoints-1){
+		 while(j<=nPoints-1){
 			 double distnow=points[i].dist(points[j]);
 			 if(distnow<mindist){
 				 mindist=distnow;
 				 a=points[i];
 				 b=points[j];
 			 }
-			 j=j++;
+			 j++;
 		 }
 		 i++;
 	 }
@@ -44,7 +45,7 @@ public class ClosestPairNaive {
 	//
 	print=true;
 	if(print){
-		System.out.println("NAIVE"+a.toString()+b.toString()+mindist);
+		System.out.println("NAIVE "+a.toString()+" "+b.toString()+" "+mindist);
 	}
 	// if (print)
 	//   System.out.println("NAIVE " + ...);
