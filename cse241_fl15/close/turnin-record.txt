@@ -1,3 +1,5 @@
 *** AUTOGRADER TURN-IN RECORD ***
 
-A grading snapshot of this lab was taken at 2015-09-14 13:22:49.
+A grading snapshot of this lab was taken at 2015-09-30 16:55:33.
+
+This turn-in overwrote a previous snapshot.
