@@ -1,13 +1,13 @@
 ########################################################################
 # CSE 241 LAB 1 GRADING RUBRIC
 
-Repo Name (WUSTL key):
+Repo Name (WUSTL key):runkun.long
 
-Language used:
+Language used:java
 
-Name of grader:
+Name of grader:TL
 
-OVERALL GRADE:
+OVERALL GRADE:97
 
 ///////////////////////////////////////////////////////////////////////
 
@@ -15,7 +15,7 @@ Lateness penalty (if any):
 
 ///////////////////////////////////////////////////////////////////////
 
-###### PART 1 (75%)
+###### PART 1 (75%) 72
 
 # CORRECTNESS OF CODE (40%)
 
@@ -23,18 +23,18 @@ Lateness penalty (if any):
 # EFFICIENCY OF CODE (20%)
  
 
-# TEST CASES (8%)
+# TEST CASES (8%) 8
 
 
-# WRITEUP (3%)
+# WRITEUP (3%) 0
+-3 no write up.. just part 2 and 3
 
-
-# CODING STYLE (4%)
+# CODING STYLE (4%) 4
 
 
 ######################################################################
 
-###### PART 2 (20%)
+###### PART 2 (20%) 20
 
 # RUNNING TIME PLOT (15%)
 
@@ -45,5 +45,5 @@ Lateness penalty (if any):
 ######################################################################
 
 
-###### PART 3 (5%)
+###### PART 3 (5%) 5
 
