@@ -10,6 +10,8 @@ public class StringTable {
     //
     public StringTable(int maxSize) 
     {
+    	Record[] hashtable =new Record[maxSize];
+    	
     }
     
     
