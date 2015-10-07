@@ -103,8 +103,9 @@ public class StringTable {
     {
     	String removekey=r.key;
     	Record search=find(removekey);
-    	if(find(removekey)!=null){
-    		recordArray
+    	if(search!=null){
+    		search.key="DELETED";
+    		counter--;
     	}
     	
     }
