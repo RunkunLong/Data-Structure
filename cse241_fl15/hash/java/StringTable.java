@@ -35,10 +35,15 @@ public class StringTable {
     	Record transfertable[];
     	transfertable=recordArray;
     	size=2*size;//double the storage space
-    	recordArray=new Record[size];
+    	StringTable increment=new StringTable(size);
     	for(int j=0;j<size/2;j++){
-    		insert(transfertable[j]);
+    		increment.insert(transfertable[j]);
     	}
+    	this.power=increment.power;
+    	this.size=increment.size;
+    	this.counter=increment.counter;
+    	this.recordArray=increment.recordArray;
+    	
     	
     	
     }
@@ -54,14 +59,38 @@ public class StringTable {
     	String pre=r.key;
     	int Key=toHashKey(pre);//change the our key from string to int
     	int h1=baseHash(Key);
-    	if(recordArray[h1]==null || recordArray[h1].key==("DELETED"))
-    	{
-    		recordArray[h1]=r;
-    		
-    	}
+    	int h2=stepHash(Key);
+        int p=h1;
+        int q=0;
+        if(recordArray[p]==null || recordArray[p].key.equals("DELETED")){
+        	recordArray[p]=r;
+        	counter++;
+        	double LF=counter/size;
+        	if(LF>0.25)
+        	{
+        		this.increment();
+        	}
+        	return true;
+        }
+        //
+        //the stepHash operation
+        //
+        while(recordArray[p]!=null && q<size){
+        	p=(p+h2)%(size);
+        	if(recordArray[p]==null || recordArray[p].key.equals("DELETED")){
+        		recordArray[p]=r;
+        		counter++;
+        		double LF=counter/size;
+        	 	if(LF>0.25)
+            	{
+            		this.increment();
+            	}
+        	 	return true;
+        	}
+        	q++;
+        }
     	
-    	
-	return true; 
+	return false; 
     }
     
     
@@ -72,6 +101,12 @@ public class StringTable {
     //
     public void remove(Record r) 
     {
+    	String removekey=r.key;
+    	Record search=find(removekey);
+    	if(find(removekey)!=null){
+    		recordArray
+    	}
+    	
     }
     
     
@@ -81,6 +116,29 @@ public class StringTable {
     //
     public Record find(String key) 
     {
+    	int hashKey = toHashKey(key);
+     	int h1 = baseHash(hashKey);
+        int h2 = stepHash(hashKey);
+        
+      //initial hash function value
+        int p = h1;
+        int q = 0;
+        while(recordArray[p]!=null && q<size){
+         		if(recordArray[p].key.equals(key)){
+         			return recordArray[p]; //if record is found, return it.
+         		}
+         }
+        while(recordArray[p]!=null && q<size){
+        	p=(p+h2)%(size);
+        	if(recordArray[p]==null ){
+        		return null;
+        	}
+        	if(recordArray[p].key.equals(key)){
+        		return recordArray[p];
+        	}
+        	q++;
+        }
+    
 	return null; 
     }
     
