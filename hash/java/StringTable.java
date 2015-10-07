@@ -11,7 +11,7 @@ public class StringTable {
 	public int power;
 	public int counter;
 	public Record[] recordArray;
-	public int test;
+	
     //
     // Create an empty table big enough to hold maxSize records.
     //
@@ -25,9 +25,9 @@ public class StringTable {
     	power=k;
     	size=(int)Math.pow(2, power);
     	this.recordArray=new Record[size];
-    	
-    	
+
     }
+    
     //
     //Double the size of the original hashtable when necessary
     public void increment()
@@ -59,11 +59,13 @@ public class StringTable {
     	String pre=r.key;
     	int Key=toHashKey(pre);//change the our key from string to int
     	int h1=baseHash(Key);
+    	//System.out.print(h1);
     	int h2=stepHash(Key);
         int p=h1;
         int q=0;
         if(recordArray[p]==null || recordArray[p].key.equals("DELETED")){
         	recordArray[p]=r;
+        	System.out.println(recordArray[p].key);
         	recordArray[p].tohashthis=Key;
         	counter++;
         	double LF=counter/size;
@@ -76,7 +78,7 @@ public class StringTable {
         //
         //the stepHash operation
         //
-        while(recordArray[p]!=null && q<size){
+        while(q<size){
         	p=(p+h2)%(size);
         	if(recordArray[p]==null || recordArray[p].key.equals("DELETED")){
         		recordArray[p]=r;
@@ -91,7 +93,7 @@ public class StringTable {
         	}
         	q++;
         }
-    	
+    	System.out.print("Hi");
 	return false; 
     }
     
@@ -108,6 +110,7 @@ public class StringTable {
     	if(search!=null){
     		find(removekey).tohashthis=0;
     		find(removekey).key="DELETED";
+    		System.out.print(find(removekey).key);
     				
     		counter--;
     	}
@@ -131,6 +134,7 @@ public class StringTable {
         while(recordArray[p]!=null && q<size){
          		if(recordArray[p].key.equals(key)){
          			return recordArray[p]; //if record is found, return it.
+         			//System.out.print(recordArray[p].key);
          		}
          }
         while(recordArray[p]!=null && q<size){
