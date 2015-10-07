@@ -26,10 +26,22 @@ public class StringTable {
     	size=(int)Math.pow(2, power);
     	this.recordArray=new Record[size];
     	
-    	Record[] hashtable =new Record[maxSize];
     	
     }
-    
+    //
+    //Double the size of the original hashtable when necessary
+    public void increment()
+    {
+    	Record transfertable[];
+    	transfertable=recordArray;
+    	size=2*size;//double the storage space
+    	recordArray=new Record[size];
+    	for(int j=0;j<size/2;j++){
+    		insert(transfertable[j]);
+    	}
+    	
+    	
+    }
     
     //
     // Insert a Record r into the table.  Return true if
@@ -39,6 +51,15 @@ public class StringTable {
     //
     public boolean insert(Record r) 
     { 
+    	String pre=r.key;
+    	int Key=toHashKey(pre);//change the our key from string to int
+    	int h1=baseHash(Key);
+    	if(recordArray[h1]==null || recordArray[h1].key==("DELETED"))
+    	{
+    		recordArray[h1]=r;
+    		
+    	}
+    	
     	
 	return true; 
     }
@@ -97,13 +118,17 @@ public class StringTable {
     
     int baseHash(int hashKey)
     {
-	// Fill in your own hash function here
-	return 0;
+    	double A=(Math.sqrt(5.0)-1)/2;
+    	int h1=(int)Math.floor(size*(A*hashKey-Math.floor(A*hashKey)));
+    	return h1;
+
     }
     
     int stepHash(int hashKey)
     {
-	// Fill in your own hash function here
-	return 0;
+    	double A = (Math.sqrt(7.0)-1)/2;
+     	int h2 = (int)Math.floor(size*(A*hashKey-Math.floor(A*hashKey)));
+     	if(h2%2==0) h2 = h2+1;  //if h2 is even, add 1 and make it odd
+     	return h2;
     }
 }
