@@ -3,13 +3,29 @@
 // A hash table mapping Strings to their positions in the the pattern sequence
 // You get to fill in the methods for this part.
 //
+import java.lang.Math;
+
 public class StringTable {
     
+	public int size;
+	public int power;
+	public int counter;
+	public Record[] recordArray;
+	public int test;
     //
     // Create an empty table big enough to hold maxSize records.
     //
     public StringTable(int maxSize) 
     {
+    	int k=0;
+    	counter=0;
+    	while(Math.pow(2, k)<maxSize){
+    		k++;
+    	}
+    	power=k;
+    	size=(int)Math.pow(2, power);
+    	this.recordArray=new Record[size];
+    	
     	Record[] hashtable =new Record[maxSize];
     	
     }
@@ -23,6 +39,7 @@ public class StringTable {
     //
     public boolean insert(Record r) 
     { 
+    	
 	return true; 
     }
     
