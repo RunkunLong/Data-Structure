@@ -11,10 +11,12 @@ import java.util.*;
 public class Record {
     public String key;
     public ArrayList<Integer> positions;
+    public int tohashthis;
     
     public Record(String s)
     {
 	key = s;
 	positions = new ArrayList<Integer>(1);
+	tohashthis=0;
     }
 }

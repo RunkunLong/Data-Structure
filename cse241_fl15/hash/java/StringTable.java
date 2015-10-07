@@ -46,7 +46,7 @@ public class StringTable {
     	
     	
     	
-    }
+   }
     
     //
     // Insert a Record r into the table.  Return true if
@@ -64,6 +64,7 @@ public class StringTable {
         int q=0;
         if(recordArray[p]==null || recordArray[p].key.equals("DELETED")){
         	recordArray[p]=r;
+        	recordArray[p].tohashthis=Key;
         	counter++;
         	double LF=counter/size;
         	if(LF>0.25)
@@ -79,6 +80,7 @@ public class StringTable {
         	p=(p+h2)%(size);
         	if(recordArray[p]==null || recordArray[p].key.equals("DELETED")){
         		recordArray[p]=r;
+        		recordArray[p].tohashthis=Key;
         		counter++;
         		double LF=counter/size;
         	 	if(LF>0.25)
@@ -104,7 +106,9 @@ public class StringTable {
     	String removekey=r.key;
     	Record search=find(removekey);
     	if(search!=null){
-    		search.key="DELETED";
+    		find(removekey).tohashthis=0;
+    		find(removekey).key="DELETED";
+    				
     		counter--;
     	}
     	
