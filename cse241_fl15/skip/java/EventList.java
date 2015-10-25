@@ -7,8 +7,8 @@ import java.util.*;
 class EventList {
     
     Random randseq;
-    public Event head;  
-    public Event tail;
+    public Event head; 
+    public Event[] tail;
     public static int neginf= Integer.MIN_VALUE;
     public static int posinf= Integer.MAX_VALUE;
     
@@ -34,13 +34,19 @@ class EventList {
     public EventList()
     {
 	randseq = new Random(58243); // You may seed the PRNG however you like.
-    Event t1,t2;
-    t1= new Event(neginf,null);
-    t2= new Event(posinf,null);
     
-    head= t1;
-    tail= t2;
-    
+    Event t1= new Event(neginf,null);
+    t1.pillar=1000;
+    Event[] t2= new Event[1000];
+    for(int i=0;i<1000;i++)
+    {
+    	t2[i]=new Event(posinf,null);
+    	t2[i].pillar=1000;
+    }
+    head=t1;
+    tail=t2;
+    head.next= tail;
+     
     }
 
     

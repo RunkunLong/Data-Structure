@@ -10,7 +10,7 @@ class Event {
     
     public int year;             // the year of the event
     public String description;   // the event description
-    Event next;                 // the right pointer
+    Event[] next=null;                 // the right pointer
     int pillar;                 // the height of the Event
    
     
