@@ -10,12 +10,17 @@ class Event {
     
     public int year;             // the year of the event
     public String description;   // the event description
+    Event next;                 // the right pointer
+    int pillar;                 // the height of the Event
+   
     
     // constructor
     public Event(int iyear, String idescription)
     {
 	year = iyear;
 	description = idescription;
+	next= null;
+	pillar=0;
     }
     
     // print method
