@@ -93,7 +93,7 @@ public class StringTable {
         	}
         	q++;
         }
-    	System.out.print("Hi");
+    	//System.out.print("Hi");
 	return false; 
     }
     
@@ -110,7 +110,7 @@ public class StringTable {
     	if(search!=null){
     		find(removekey).tohashthis=0;
     		find(removekey).key="DELETED";
-    		System.out.print(find(removekey).key);
+    		//System.out.print(find(removekey).key);
     				
     		counter--;
     	}
@@ -136,7 +136,10 @@ public class StringTable {
          			return recordArray[p]; //if record is found, return it.
          			//System.out.print(recordArray[p].key);
          		}
+         		p=(p+h2)%(size);
+         		q++;
          }
+        /*
         while(recordArray[p]!=null && q<size){
         	p=(p+h2)%(size);
         	if(recordArray[p]==null ){
@@ -147,6 +150,7 @@ public class StringTable {
         	}
         	q++;
         }
+        */
     
 	return null; 
     }
