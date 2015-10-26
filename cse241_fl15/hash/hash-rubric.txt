@@ -1,19 +1,26 @@
 ########################################################################
 # CSE 241 LAB 2 GRADING RUBRIC
 
-Repo Name (WUSTL key):
+Repo Name (WUSTL key): runkun.long
 
-Language used:
+Language used: Java
 
-Name of grader:
+Name of grader: Tyler Ponder
 
-OVERALL GRADE:
+OVERALL GRADE: 82
+
+///////////////////////////////////////////////////////////////////////
+
+Lateness penalty (if any): none
 
 ///////////////////////////////////////////////////////////////////////
 
-Lateness penalty (if any):
 
-///////////////////////////////////////////////////////////////////////
+You made a few small errors in the find function that caused the program to fail.
+I made a few edits to code and got it to work on my computer.
+I believe you should get the edits and the program should now work.
+You were very close to getting it right.
+
 
 ###### PART 1 (70% total)
 
@@ -31,6 +38,13 @@ Lateness penalty (if any):
 
 # FIND (15%)
 
+-8
+
+You made a few subtle errors in the find method; this was why you failed
+all the tests. You had a never-ending while loop, and you incremented the
+hash index in the wrong place.
+
+
 
 ### TEST CASES (12%)
 
@@ -46,6 +60,9 @@ Lateness penalty (if any):
 ###### PART 2 (30%)
 
 # SHORT-CIRCUITING STRING COMPARISON (10%)
+
+-10
+It doesn't appear that you have implented this, unless you did something I missed.
 
 
 # DYNAMIC RESIZING (20%)
