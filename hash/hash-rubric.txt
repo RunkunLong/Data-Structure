@@ -7,7 +7,7 @@ Language used: Java
 
 Name of grader: Tyler Ponder
 
-OVERALL GRADE: 82
+OVERALL GRADE: 70
 
 ///////////////////////////////////////////////////////////////////////
 
@@ -47,6 +47,9 @@ hash index in the wrong place.
 
 
 ### TEST CASES (12%)
+
+-12
+Failed all test cases.
 
 
 ### WRITEUP (4%)
