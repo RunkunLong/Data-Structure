@@ -1,11 +1,11 @@
-*** RUNNING PRE-TURNIN TESTS ON 2015-11-01 00:14:51 CDT ***
+*** RUNNING PRE-TURNIN TESTS ON 2015-11-01 01:15:07 CDT ***
 * Language is Java
 
 * Running test #1
 * Arguments: skip/fewEvents.txt skip/query0.txt
 ERROR: program terminated abnormally:
   Exception in thread "main" java.lang.NullPointerException
-	at EventList.insert(EventList.java:74)
+	at EventList.insert(EventList.java:75)
 	at Main.main(Main.java:56)
 --- FAILED test #1
 
@@ -13,7 +13,7 @@ ERROR: program terminated abnormally:
 * Arguments: skip/allEvents.txt skip/query1.txt
 ERROR: program terminated abnormally:
   Exception in thread "main" java.lang.NullPointerException
-	at EventList.insert(EventList.java:74)
+	at EventList.insert(EventList.java:75)
 	at Main.main(Main.java:56)
 --- FAILED test #2
 
@@ -21,7 +21,7 @@ ERROR: program terminated abnormally:
 * Arguments: skip/allEvents.txt skip/query2.txt
 ERROR: program terminated abnormally:
   Exception in thread "main" java.lang.NullPointerException
-	at EventList.insert(EventList.java:74)
+	at EventList.insert(EventList.java:75)
 	at Main.main(Main.java:56)
 --- FAILED test #3
 
@@ -29,7 +29,7 @@ ERROR: program terminated abnormally:
 * Arguments: skip/allEvents.txt skip/query3.txt
 ERROR: program terminated abnormally:
   Exception in thread "main" java.lang.NullPointerException
-	at EventList.insert(EventList.java:74)
+	at EventList.insert(EventList.java:75)
 	at Main.main(Main.java:56)
 --- FAILED test #4
 
