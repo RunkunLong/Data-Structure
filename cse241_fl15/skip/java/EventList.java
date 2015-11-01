@@ -7,10 +7,10 @@ import java.util.*;
 class EventList {
     
     Random randseq;
-    public Event[] head; 
-    public Event[] tail;
-    public static int neginf= Integer.MIN_VALUE;
-    public static int posinf= Integer.MAX_VALUE;
+    public Event[] head=new Event[1000]; 
+    public Event[] tail=new Event[1000];
+    public int neginf= Integer.MIN_VALUE;
+    public int posinf= Integer.MAX_VALUE;
     
     public int h;  //height of the skiplist
     
@@ -34,22 +34,21 @@ class EventList {
     public EventList()
     {
 	randseq = new Random(58243); // You may seed the PRNG however you like.
-	Event[] t1= new Event[1000];
+	
     for(int i=0;i<1000;i++)
 	{
-	    t1[i]=new Event(posinf,null);
-	    t1[i].height=1000;
-	    t1[i].next=tail;
+	    head[i]=new Event(neginf,null);
+	    head[i].height=1000;
+	    head[i].next=tail;
     }
-    Event[] t2= new Event[1000];
+    
     for(int i=0;i<1000;i++)
     {
-    	t2[i]=new Event(posinf,null);
-    	t2[i].height=1000;
-    	t2[i].pre=head;
+    	tail[i]=new Event(posinf,null);
+    	tail[i].height=1000;
+ 
     }
-    head=t1;
-    tail=t2;
+
      
     }
 
@@ -61,17 +60,22 @@ class EventList {
     {
 	  int t,l;
 	  Event[] x=head;
-	  Event[] y=null;
+	  
 	  t=randomHeight();
 	  Event[] E=new Event[t];
 	  e.height=t;
 	   for(int j=0;j<t;j++)
-		   E[j]=e;
-	  
-	  l=999;
+	   {
+		   
+		   E[j]=new Event(e.year,e.description);
+		   E[j].height=t;
+	   }
+	  l=head[0].height-1;
 	  while(l>=0)
 	  {
-		  y=x[l].next;
+		  Event[] y=x[l].next;
+		  System.out.println(l);
+		  System.out.println( y[0].year);
 		  if(y[l].year<e.year)
 			  x=y;
 		  else
