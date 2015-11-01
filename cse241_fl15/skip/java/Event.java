@@ -11,8 +11,7 @@ class Event {
     public int year;             // the year of the event
     public String description;   // the event description
     public Event[] next=null;           // the right pointer
-                // the left pointer
-    public int height=1;                 // the height of the Event
+    public int height;                 // the height of the Event
    
     
     // constructor
@@ -20,9 +19,7 @@ class Event {
     {
 	year = iyear;
 	description = idescription;
-
-
-	//height=1;
+    height=1;
     }
     
     // print method
