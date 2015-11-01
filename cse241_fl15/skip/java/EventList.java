@@ -101,22 +101,20 @@ class EventList {
   	  Event[] temp=null; //
   	  while(l>=0)
   	  {
-  		  v=u[l].next;
-  		  if(v[l].year<=year)
-  		  {
-  		    if(v[l].year==year)
-  		    {
-  			    temp=v[l].next;
-  			    u[l].next=temp;
-  		    }
-  		    else
-  			    u=v;
-  		  }
-  		  else
-  			  l--;
+  		v=u[l].next;
+  		if(v[l].year==year){
+  			temp=v[l].next;
+  			u[l].next=temp;
+  		}
+  		else if(v[l].year<year)
+  		{
+  			u=v;
+  		}
+  		else{
+  			l--;
+  		}
   	  }
-  	  
-    }
+     }
     
     //
     // Find all events with greatest year <= input year
