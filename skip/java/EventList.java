@@ -70,12 +70,10 @@ class EventList {
 		   E[j]=new Event(e.year,e.description);
 		   E[j].height=t;
 	   }
-	  l=head[0].height-1;
+	  l=999;
 	  while(l>=0)
 	  {
 		  Event[] y=x[l].next;
-		  System.out.println(l);
-		  System.out.println( y[0].year);
 		  if(y[l].year<e.year)
 			  x=y;
 		  else
@@ -127,17 +125,17 @@ class EventList {
     {
      int l=head[0].height-1;
      Event[] fmr=new Event[1000];
-     int counter=0;
      Event[] w=head;
      Event[] z=null;
      Event temp=null;
      while(l>=0){
     	 z=w[l].next;
-    	 if(z[l].next[l].year<=year && z[l].year==z[l].next[l].year){
+    	 if((z[l].year==z[l].next[l].year) && (z[l].next!=null))
+    	 {
     		 z=z[l].next;            //calculate all the events in same year
-    		 counter++;              //calculate all the events in same year
     	 }
-    	 if(z[l].next[l].year<=year && z[l].next!=null)
+    	 //System.out.println(counter);
+    	 if((z[l].next[l].year<=year) && (z[l].next!=null))
     		 w=z;
     	 else
     	 {
@@ -145,20 +143,21 @@ class EventList {
             {
     			  if(w[0].next[0].year>year)
     				  return null;
-    		   int i=1;
+    		   int counter=1;          //counts for the nodes of same year
     		   temp=w[0].next[0];
     		   fmr[0]=temp;
-    		   while(counter>0)
+    		   while(temp.year==temp.next[0].year)
     		   {
     		 	  temp=temp.next[0];
-    		 	  fmr[i]=temp;
-    			  i++;
-    			  counter--;    			 
+    		 	  fmr[counter]=temp;
+    			  counter++;   			 
     		   }
-    		   Event[] FMR=new Event[i];
-    		   for(int j=0;j<i;j++)
+    		   Event[] FMR=new Event[counter];
+    		   for(int j=0;j<counter;j++)
     		   {
-    			  FMR[j]=fmr[j+1];
+    			  int ty=fmr[j].year;
+    			  String td=fmr[j].description;
+    			  FMR[j]=new Event(ty,td);
     		   }
     		   return FMR; 			 
     	     }
