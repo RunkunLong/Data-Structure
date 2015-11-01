@@ -69,16 +69,20 @@ class EventList {
 		   E[j]=e;
 	  
 	  l=999;
-	  while(l>=0){
+	  while(l>=0)
+	  {
 		  y=x[l].next;
 		  if(y[l].year<e.year)
 			  x=y;
 		  else
-			  if (l<t){
-				 x[l].next=E;
-				 E[l].next=y;
-			  }
-		  l--;
+		  {
+			  if (l<t)
+			      {
+					 x[l].next=E;
+					 E[l].next=y;
+				  }  
+			  l--;
+		  }
 	  }
 	  
     }
@@ -93,15 +97,21 @@ class EventList {
       Event[] u=head;
   	  Event[] v=null;
   	  Event[] temp=null; //
-  	  while(l>=0){
+  	  while(l>=0)
+  	  {
   		  v=u[l].next;
-  		  if(v[l].year==year){
-  			  temp=v[l].next;
-  			  u[l].next=temp;
+  		  if(v[l].year<=year)
+  		  {
+  		    if(v[l].year==year)
+  		    {
+  			    temp=v[l].next;
+  			    u[l].next=temp;
+  		    }
+  		    else
+  			    u=v;
   		  }
   		  else
-  			  u=v;
-  		  l--;
+  			  l--;
   	  }
   	  
     }
