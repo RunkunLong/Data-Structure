@@ -7,8 +7,8 @@ import java.util.*;
 class EventList {
     
     Random randseq;
-    public Event[] head=new Event[1000]; 
-    public Event[] tail=new Event[1000];
+    public Event[] head=new Event[1]; 
+    public Event[] tail=new Event[1];
     public int neginf= Integer.MIN_VALUE;
     public int posinf= Integer.MAX_VALUE;
     
@@ -35,19 +35,24 @@ class EventList {
     {
 	randseq = new Random(58243); // You may seed the PRNG however you like.
 	
-    for(int i=0;i<1000;i++)
-	{
-	    head[i]=new Event(neginf,null);
-	    head[i].height=1000;
-	    head[i].next=tail;
-    }
-    
-    for(int i=0;i<1000;i++)
-    {
-    	tail[i]=new Event(posinf,null);
-    	tail[i].height=1000;
+	head[0]=new Event(neginf,null);
+	head[0].height=1;
+	head[0].next=tail;
+   // for(int i=0;i<1000;i++)
+	//{
+	 //   head[i]=new Event(neginf,null);
+	 //   head[i].height=1000;
+	 //   head[i].next=tail;
+    //}
+    tail[0]=new Event(posinf,null);
+    tail[0].height=1;
+    tail[0].next=null;
+    //for(int i=0;i<1000;i++)
+    //{
+    //	tail[i]=new Event(posinf,null);
+    //	tail[i].height=1000;
  
-    }
+   // }
 
      
     }
@@ -58,9 +63,7 @@ class EventList {
     //
     public void insert(Event e)
     {
-	  int t,l;
-	  Event[] x=head;
-	  
+	  int t,l;	  	  
 	  t=randomHeight();
 	  Event[] E=new Event[t];
 	  e.height=t;
@@ -70,10 +73,59 @@ class EventList {
 		   E[j]=new Event(e.year,e.description);
 		   E[j].height=t;
 	   }
-	  l=999;
+	   if(t>head[0].height)
+	   {
+		   int oldh=head[0].height;
+		   int newh=head[0].height;
+		   while(newh<t)
+		   {
+			   newh=newh*2;
+		   }
+		   
+		  // System.out.println(newh);
+		   Event[] temptail=new Event[newh];
+	   		for(int j=0;j<newh;j++)
+	   		{
+	   			temptail[j]=new Event(posinf,null);
+	   			temptail[j].height=newh;
+	   			temptail[j].next=null;
+	   		}
+	   		tail = temptail;
+		   Event[] temphead=new Event[newh];
+		   		for(int i=0;i<newh;i++){
+		   			if(i<oldh)
+		   			{
+		   				int ty=head[i].year;
+		   				String ts=head[i].description;
+		   				temphead[i]=new Event(ty,ts);
+		   				temphead[i].height=newh;
+		   				temphead[i].next=head[i].next;
+		   			}
+		   			else
+		   			{
+		   			    temphead[i]=new Event(neginf,null);
+		   			    temphead[i].height=newh;
+		   			    temphead[i].next=tail;
+		   			    
+		   			}
+		   		}
+		   
+		   	head=new Event[newh];
+		   	for(int s=0;s<newh;s++)
+	   		{
+	   			int tty=temphead[s].year;
+	   			String tts=temphead[s].description;
+	   			head[s]=new Event(tty,tts);
+	   			head[s].next=temphead[s].next;
+	   			head[s].height=newh;
+	   		}		   		
+	   }
+	  Event[] x=head;
+	  l=head[0].height-1;
 	  while(l>=0)
 	  {
 		  Event[] y=x[l].next;
+		  System.out.print(y[0].year);
 		  if(y[l].year<e.year)
 			  x=y;
 		  else
