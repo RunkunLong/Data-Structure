@@ -125,7 +125,6 @@ class EventList {
 	  while(l>=0)
 	  {
 		  Event[] y=x[l].next;
-		  System.out.print(y[0].year);
 		  if(y[l].year<e.year)
 			  x=y;
 		  else
