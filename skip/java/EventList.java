@@ -131,7 +131,7 @@ class EventList {
      while(l>=0){
     	 z=w[l].next;
     	 int counter=1;              //# of events happened in same year
-    	 if((z[l].next!=null) && (z[l].year==z[l].next[l].year))
+    	 while((z[l].next!=null) && (z[l].year==z[l].next[l].year))
     	 {
     		 z=z[l].next;            //
     		 counter++;              
