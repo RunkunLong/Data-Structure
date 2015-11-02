@@ -106,13 +106,15 @@ class EventList {
   			temp=v[l].next;
   			u[l].next=temp;
   		}
-  		else if(v[l].year<year)
-  		{
-  			u=v;
-  		}
-  		else{
-  			l--;
-  		}
+  		else 
+  			if(v[l].year<year)
+  			{
+  			   u=v;
+  		    }
+  		    else
+  		    {
+  			  l--;
+  		    }
   	  }
      }
     
@@ -172,40 +174,44 @@ class EventList {
     //
     public Event [] findRange(int first, int last)
     {
-    	Event F=null;
-    	Event L=null;
+    	Event []S=null;                 //store the second element of my return sequence
+    	Event []fr=new Event[1000];
     	int l=head[0].height-1;
     	Event[] x=head;
     	Event[] y=null;
     	while(l>=0)
     	{
-    		y=x[l].next;
-    		 if(y[l].year<first && y[l].year!=posinf)
-   			  x=y;
-   		  else
-   		  {
-   			if(l==0)
-   			{
- 				x=y;
- 				y=x[0].next;
- 				F=x[0];
- 				int counter=1;
- 				while(y[0].year<=last)
- 				{
- 					x[0]=y[0];           //start at the second element after first
- 					y=y[0].next;
- 					counter++;
- 				}                     //end when y[0].year>last,that is x[0].next.year>last
- 			    Event[] fR=new Event[counter];
- 			    for(int i=0;i<counter;i++)
- 			    {
- 			    	fR[i]=F;
- 			    	F=F.next[0];
- 			    }
- 			   return fR;
-   			}
-   			l--;
-   		  }	  
+    	  y=x[l].next;
+    	  if(y[l].year<first)
+ 			    x=y;
+ 		      else
+ 		     	  if((y[l].year>=first) && (y[l].year<=last))
+ 		    	  {
+ 		    		  if(l==0)
+ 		     			{
+ 		    			fr[0]=y[0];
+ 		   				S=y[0].next;
+ 		   				int counter=1;
+ 		   				while(S[0].year<=last)
+ 		   				{
+ 		   					fr[counter]=S[0];           //start at the second element after first
+ 		   					S=S[0].next;
+ 		   					counter++;
+ 		   				}                     
+ 		   			    Event[] FR=new Event[counter];
+ 		   			    for(int i=0;i<counter;i++)
+ 		   			    {
+ 		   			    	int j=fr[i].year;
+ 		   			    	String s=fr[i].description;
+ 		   			    	FR[i]=new Event(j,s);
+ 		   			    }
+ 		   			    return FR;
+ 		     			}
+ 		     		l--;
+ 		    	  }
+ 		     	  else
+ 		   		        l--;	
+    		      
     	}
 	return null;
     }
