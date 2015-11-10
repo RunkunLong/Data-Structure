@@ -7,7 +7,7 @@ Language used:java
 
 Name of grader:TL
 
-OVERALL GRADE:97
+OVERALL GRADE:77 [97 - 20 points for collaboration policy violation - JB]
 
 ///////////////////////////////////////////////////////////////////////
 
