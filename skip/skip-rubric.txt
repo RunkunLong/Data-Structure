@@ -1,13 +1,13 @@
 ########################################################################
 # CSE 241 LAB 3 GRADING RUBRIC
 
-Repo Name (WUSTL key):
+Repo Name (WUSTL key): 
 
-Language used:
+Language used: JAVA
 
-Name of grader:
+Name of grader: Christopher Ogle
 
-OVERALL GRADE:
+OVERALL GRADE: 100/100
 
 ///////////////////////////////////////////////////////////////////////
 
