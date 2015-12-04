@@ -11,7 +11,7 @@
 ### Uncomment the following line to enable testing and feedback on
 ### your lab from the autograder.
 
-#test
+test
 
 ### Uncomment the following line to enable testing and feedback on the
 ### extra credit portion of your lab by the autograder.
