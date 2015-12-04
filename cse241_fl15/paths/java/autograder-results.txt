@@ -1,0 +1,288 @@
+*** RUNNING PRE-TURNIN TESTS ON 2015-12-03 23:14:01 CST ***
+* Language is Java
+
+* Running test #1
+* Arguments: pqtest 1
+ERROR: output differs from expected result:
+@@ -1,17 +1,17 @@
+ *** UNIT TEST ONE ***
+ Extractions:
+-@1
+ @2
+ @3
+ @3
+-@4
++@1
+ @5
+-Extractions:
+ @6
+-@7
++Extractions:
++@9
++@4
+ @8
++@7
+ @8
+-@9
+ @11
+ @12
+ @14
+--- FAILED test #1
+
+* Running test #2
+* Arguments: pqtest 2
+ERROR: output differs from expected result:
+@@ -12,14 +12,14 @@
+ @9
+ @10
+ Elements:
+-@5
++@2
+ @6
+ @7
+ @8
+ @9
+ @10
+ Elements:
+-@5
++@1
+ @3
+ @7
+ @8
+@@ -33,9 +33,9 @@
+ Extractions:
+ @1
+ @2
++@2
+ @3
+ @4
+-@5
+ @7
+ @8
+ @10
+--- FAILED test #2
+
+* Running test #3
+* Arguments: pqtest 3
+ERROR: output differs from expected result:
+@@ -1,55 +1,55 @@
+ *** UNIT TEST THREE ***
+ Extractions:
+-@972407
+-@4580314
+-@5034630
+-@13233574
+-@13387070
+-@14910470
+-@17463959
+-@19237354
+-@20812026
+-@23397466
+-@25304658
++@1356678751
++@72716343
++@85903286
++@338941183
+ @27184227
+-@27623542
+-@28085542
+-@30271078
+ @31497018
+-@32040955
+-@36083087
+-@36371366
+-@37689282
+-@39097291
+-@44302762
+-@46221346
+-@50478938
+-@50775386
+-@51510571
+-@52324074
+-@55543943
+-@57868039
+-@61775674
+-@68594922
+-@70048427
+-@71691622
+-@72716343
+-@73788750
+-@75466154
+-@75739859
+-@76244511
+-@76471511
++@465732067
++@82549690
++@500650591
++@663598947
++@388257214
++@826145198
++@444885519
++@278116131
++@420474210
++@562887387
+ @76938423
+-@78850902
+-@80293202
++@352759094
+ @80863243
+-@82549690
+-@84085915
+-@84330474
+-@85903286
+-@86884070
+-@87032082
+-@94574751
++@614178879
++@575087775
++@652205926
++@658890755
++@670296834
++@376366210
++@889778978
++@901991290
++@372710303
++@184819787
++@263304942
++@402399458
++@607079055
++@736070386
++@793853823
++@391182371
++@651492371
++@690735387
++@845943707
++@860565415
++@886028859
++@835683010
++@173068911
++@110584926
++@457985654
++@727811158
++@811669587
++@896475322
++@920023870
++@365778218
++@927427106
+ ************************************
+ Extractions:
+ @4123555
+@@ -57,6 +57,7 @@
+ @12793123
+ @14265159
+ @14950935
++@15624903
+ @18097175
+ @20032735
+ @20036275
+@@ -64,7 +65,9 @@
+ @24628555
+ @27564215
+ @29708947
++@972407
+ @31960515
++@32162347
+ @32855091
+ @35468291
+ @35539903
+@@ -77,19 +80,21 @@
+ @47272463
+ @49108107
+ @49789175
++@50478938
+ @50700323
+-@51801531
++@51928867
+ @56447651
++@52324074
++@36083087
++@51801531
+ @57633331
+-@57871195
+-@58946155
+ @62627679
+-@62743979
+ @62766335
+ @63041359
+ @63062803
+ @68160779
+ @69665479
++@71691622
+ @72624555
+ @79197183
+ @81406455
+@@ -97,8 +102,3 @@
+ @83527403
+ @86783743
+ @87211743
+-@88928679
+-@94703778
+-@95388250
+-@95511219
+-@99105963
+--- FAILED test #3
+
+* Running test #4
+* Arguments: paths/airports.txt paths/flights.txt paths/query1.txt
+ERROR: output differs from expected result:
+@@ -1,11 +1,7 @@
+ Read 23 airports
+ Read 1354 flights
+ > SEA to {TPA, BOS, DCA, SFO}?
+-SEA
+-@LENGTH = 339 minutes
+-SEA
+-@LENGTH = 370 minutes
+-SEA
+-@LENGTH = 444 minutes
+-SEA
+-@LENGTH = 360 minutes
++No path to TPA
++No path to BOS
++No path to DCA
++No path to SFO
+--- FAILED test #4
+
+* Running test #5
+* Arguments: paths/airports.txt paths/flights.txt paths/query2.txt
+ERROR: output differs from expected result:
+@@ -1,11 +1,7 @@
+ Read 23 airports
+ Read 1354 flights
+ > STL to {TPA, DEN, PVD, ABQ}?
+-STL
+-@LENGTH = 227 minutes
+-STL
+-@LENGTH = 358 minutes
+-STL
+-@LENGTH = 289 minutes
+-STL
+-@LENGTH = 150 minutes
++No path to TPA
++No path to DEN
++No path to PVD
++No path to ABQ
+--- FAILED test #5
+
+* Running test #6
+* Arguments: paths/airports.txt paths/flights.txt paths/query3.txt
+ERROR: output differs from expected result:
+@@ -1,11 +1,7 @@
+ Read 23 airports
+ Read 1354 flights
+ > BNA to {STL, ABQ, JFK, PVD}?
+-BNA
+-@LENGTH = 238 minutes
+-BNA
+-@LENGTH = 225 minutes
+-BNA
+-@LENGTH = 216 minutes
+-BNA
+-@LENGTH = 214 minutes
++No path to STL
++No path to ABQ
++No path to JFK
++No path to PVD
+--- FAILED test #6
+
+* Passed 0/6 tests
