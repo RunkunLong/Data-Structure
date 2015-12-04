@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 //
 // PRIORITYQUEUE.JAVA
 // A priority queue class supporting sundry operations needed for
@@ -6,17 +8,35 @@
 
 class PriorityQueue<T> {
     
-    // constructor
+	public ArrayList<Element <T>>flight=new ArrayList<Element<T>>();
+	public int size;
+	// constructor
     //
+	class Element<T>
+	{
+		public int key;
+		public T value;
+		public Handle handle;
+		public Element(int k, T v, Handle h)
+		{
+			key=k;
+			value=v;
+			handle=h;
+		}
+	}
     public PriorityQueue()
     {
+    	flight.add(0,null);
+    	size =1;
     }
     
     // Return true iff the queue is empty.
     //
     public boolean isEmpty()
     {
-	return true;
+    	if(size==1)return true;
+    	else return false;
+	
     }
     
     // Insert a pair (key, value) into the queue, and return
@@ -25,14 +45,42 @@ class PriorityQueue<T> {
     //
     Handle insert(int key, T value)
     {
-	return null;
+    	int s=size;
+    	Handle h =new Handle(s);
+    	Element<T> temp=new Element<T> (key,value,h);
+    	flight.add(s,temp);
+    	int parentindex = (int)Math.floor(s/2);
+    	if(parentindex<=1)
+    		parentindex=1;
+    	int parentkey=flight.get(parentindex).key;
+    	while(s>1 && key<parentkey)
+    	{
+    		swap(s,parentindex);
+    		s=(int)Math.floor(s/2);
+    		parentindex=(int)Math.floor(s/2);
+    		if(parentindex<1)
+        		parentindex=1;      	
+    	}
+    	size++;
+    	return h;
     }
     
+    public void swap(int p,int q)
+    {
+    	Element<T> t=flight.get(p);
+    	flight.set(p, flight.get(q));
+    	flight.set(q,t);
+    	flight.get(p).handle.index=p;
+    	flight.get(q).handle.index=q;
+    }
     // Return the smallest key in the queue.
     //
     public int min()
     {
-	return 0;
+    	if(isEmpty())
+    		return 0;
+    	else
+    		return flight.get(1).key;
     }
     
     // Extract the (key, value) pair associated with the smallest
@@ -40,7 +88,36 @@ class PriorityQueue<T> {
     //
     public T extractMin()
     {
-	return null;
+    if(isEmpty())	
+    	return null;
+    int tempindex=flight.get(1).handle.index;
+    T temp=flight.get(1).value;
+    flight.set(1,flight.get(size-1));
+    flight.get(1).handle.index=tempindex;
+    size--;
+    heapify(1);
+    return temp;
+    
+    }
+    public void heapify(int i)
+    {
+    	if(i<=(int)Math.floor(size/2))
+    	{
+    		int j;
+    		if(size<2*i+1 ||flight.get(2*i).key<flight.get(2*i+1).key)
+    		{
+    			j=2*i;
+    		}
+    		else
+    		{
+    			j=2*i+1;
+    		}
+    		if(flight.get(j).key<flight.get(i).key)
+    		{
+    			swap(i,j);
+    			heapify(j);
+    		}
+    	}
     }
     
     
@@ -52,7 +129,25 @@ class PriorityQueue<T> {
     //
     public boolean decreaseKey(Handle h, int newkey)
     {
-	return false;
+    if(flight.get(h.index)==null)
+    	return false;
+    if(h.index>size)
+    	return false;
+    if(flight.get(h.index).key<=newkey)
+    	return false;
+    int temp=h.index;
+    flight.get(temp).key=newkey;
+    int parentindex=(int)Math.floor(temp/2);
+    while(temp>1 && newkey<flight.get(parentindex).key)
+    {
+    	swap(temp,parentindex);
+    	temp=(int)Math.floor(temp/2);
+    	parentindex=(int)Math.floor(temp/2);
+    	if(parentindex<=1)
+    		parentindex=1;
+    }
+    h.index=temp;
+    return true;  
     }
     
     
@@ -62,7 +157,10 @@ class PriorityQueue<T> {
     //
     public int handleGetKey(Handle h)
     {
-	return 0;
+    	if(flight.get(h.index)!=null)
+    		return flight.get(h.index).key;
+    	else
+    		return 0;
     }
 
     // Get the value object of the (key, value) pair associated with a 
@@ -71,13 +169,22 @@ class PriorityQueue<T> {
     //
     public T handleGetValue(Handle h)
     {
-	return null;
+    	if(flight.get(h.index)==null)
+    		return null;
+    	else
+    		return flight.get(h.index).value;
     }
     
     // Print every element of the queue in the order in which it appears
     // in the implementation (i.e. the array representing the heap).
     public String toString()
     {
-	return "not implemented yet";
+    String printlist="";
+    for(int i=1;i<size;i++)
+    {
+    	printlist=printlist+""+flight.get(i).value;
     }
+	return printlist;
+    }
+
 }
