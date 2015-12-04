@@ -71,4 +71,5 @@ public class Vertex {
     
     private int _id;
     private ArrayList<Edge> neighbors;
+    public Handle handle;
 }
