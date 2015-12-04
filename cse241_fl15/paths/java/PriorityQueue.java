@@ -34,9 +34,10 @@ class PriorityQueue<T> {
     //
     public boolean isEmpty()
     {
-    	if(size==1)return true;
-    	else return false;
-	
+    	if(size==1)
+    		return true;
+    	else 
+    		return false;
     }
     
     // Insert a pair (key, value) into the queue, and return
@@ -48,9 +49,9 @@ class PriorityQueue<T> {
     	int s=size;
     	Handle h =new Handle(s);
     	Element<T> temp=new Element<T> (key,value,h);
-    	flight.add(s,temp);
+    	flight.add(size,temp);
     	int parentindex = (int)Math.floor(s/2);
-    	if(parentindex<=1)
+    	if(parentindex<1)
     		parentindex=1;
     	int parentkey=flight.get(parentindex).key;
     	while(s>1 && key<parentkey)
@@ -92,6 +93,7 @@ class PriorityQueue<T> {
     	return null;
     int tempindex=flight.get(1).handle.index;
     T temp=flight.get(1).value;
+    flight.get(1).handle.index=0;
     flight.set(1,flight.get(size-1));
     flight.get(1).handle.index=tempindex;
     size--;
@@ -104,7 +106,7 @@ class PriorityQueue<T> {
     	if(i<=(int)Math.floor(size/2))
     	{
     		int j;
-    		if(size<2*i+1 ||flight.get(2*i).key<flight.get(2*i+1).key)
+    		if(size<=2*i ||flight.get(2*i).key<flight.get(2*i+1).key)
     		{
     			j=2*i;
     		}
@@ -143,7 +145,7 @@ class PriorityQueue<T> {
     	swap(temp,parentindex);
     	temp=(int)Math.floor(temp/2);
     	parentindex=(int)Math.floor(temp/2);
-    	if(parentindex<=1)
+    	if(parentindex<1)
     		parentindex=1;
     }
     h.index=temp;
