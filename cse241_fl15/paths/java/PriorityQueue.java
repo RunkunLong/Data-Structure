@@ -92,6 +92,7 @@ class PriorityQueue<T> {
     	return null;
     int tempindex=flight.get(1).handle.index;
     T temp=flight.get(1).value;
+    flight.get(1).handle.index=0;
     flight.set(1,flight.get(size-1));
     flight.get(1).handle.index=tempindex;
     size--;
