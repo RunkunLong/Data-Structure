@@ -56,10 +56,12 @@ class PriorityQueue<T> {
     	while(s>1 && key<parentkey)
     	{
     		swap(s,parentindex);
-    		s=(int)Math.floor(s/2);
+    		s=parentindex;
     		parentindex=(int)Math.floor(s/2);
-    		if(parentindex<1)
-        		parentindex=1;      	
+    		if(parentindex<1){
+        		parentindex=1; 
+    		}
+    		parentkey = flight.get(parentindex).key;
     	}
     	size++;
     	return h;
@@ -183,7 +185,9 @@ class PriorityQueue<T> {
     String printlist="";
     for(int i=1;i<size;i++)
     {
-    	printlist=printlist+""+flight.get(i).value;
+    	//printlist=printlist+""+flight.get(i).value;
+    	printlist = printlist+"("+flight.get(i).key+", "+flight.get(i).value+")\n";
+    	//printlist = printlist+flight.get(i).toString()+"\n";
     }
 	return printlist;
     }
