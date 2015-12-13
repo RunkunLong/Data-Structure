@@ -1,17 +1,17 @@
 ########################################################################
 # CSE 241 LAB 4 GRADING RUBRIC
 
-Repo Name (WUSTL key):
+Repo Name (WUSTL key): runkun.long
 
-Language used:
+Language used: Java
 
-Name of grader:
+Name of grader: Tyler Ponder
 
-OVERALL GRADE:
+OVERALL GRADE: 86
 
 ///////////////////////////////////////////////////////////////////////
 
-Lateness penalty (if any):
+Lateness penalty (if any): none
 
 ///////////////////////////////////////////////////////////////////////
 
@@ -19,7 +19,12 @@ Lateness penalty (if any):
 
 ### MIN and ISEMPTY (6%)
 
-### INSERT (10%)
+### INSERT (5/10%)
+
+You were very close, but your insert code was buggy. I have fixed it
+so that it now works, there was only a minor error. This is what caused
+you to fail the tests.
+(-5)
 
 ### EXTRACTMIN (10%)
 
@@ -29,7 +34,10 @@ Lateness penalty (if any):
 
 ### TOSTRING (2%)
 
-### TEST CASES (9%)
+### TEST CASES (0/9%)
+
+You failed all 3 test cases 
+(-9)
 
 ### WRITEUP (1%)
 
